@@ -4,7 +4,7 @@ Made for a project at my university. Now that the submission is complete I'm ope
 The project was creating a game using the C programming language that was taught over the semester. Of course, the first thought that sprang to mind was to create an incremental game! Unfortunately, I don't know how to make graphics in C (yet), but I managed to make a fully fledged incremental game with a prestige layer that autosaves!
 
 ## Inspiration
-Sheet Music Boss's series of RUSH songs, a set of impossible piano pieces. The most popular of these is RUSH E: https://www.youtube.com/watch?v=Qskm9MTz2V4
+Sheet Music Boss's series of RUSH songs, a set of impossible piano pieces. The most popular of these is RUSH E: https://www.youtube.com/watch?v=Qskm9MTz2V4 (easter egg: my most liked YouTube comment is on this video, with over 10,000 likes!)
 
 ## How to play
 1. Download the .exe file
