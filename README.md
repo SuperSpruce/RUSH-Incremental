@@ -14,11 +14,11 @@ Sheet Music Boss's series of RUSH songs, a set of impossible piano pieces. The m
 Warning: Moving the .exe and RushIncrementalSave.txt files to separate directories will cause you to lose your save. Make sure that the .exe and RushIncrementalSave.txt files are in the same directory.
 
 ## Changelog
-11-15-2022: Started working on the game.
-11-16-2022: My computer's storage drive borked out of nowhere, causing me to lose all the code.
-11-28-2022: Got my computer working again
-11-29-2022: Started working on the game again
-12-5-2022: Game finished!
+11-15-2022: Started working on the game.<br />
+11-16-2022: My computer's storage drive borked out of nowhere, causing me to lose all the code.<br />
+11-28-2022: Got my computer working again<br />
+11-29-2022: Started working on the game again<br />
+12-5-2022: Game finished!<br />
 12-13-2022: Game open-sourced and uploaded to GitHub!
 
 Don't expect future updates to this game by me. It's a completed project. If you want more content, fork the code and make a mod!
