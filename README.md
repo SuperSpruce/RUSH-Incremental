@@ -19,6 +19,7 @@ Warning: Moving the .exe and RushIncrementalSave.txt files to separate directori
 11-28-2022: Got my computer working again<br />
 11-29-2022: Started working on the game again<br />
 12-5-2022: Game finished!<br />
-12-13-2022 (v1.0): Game open-sourced and uploaded to GitHub!
+12-13-2022 (v1.0): Game open-sourced and uploaded to GitHub!<br />
+12-15-2022 (v1.0.1): Fixed a bug where RUSHing with very few notes gives more RUSH than with some notes (and RUSHing with no notes gave infinite RUSH lol)
 
 Don't expect future updates to this game by me. It's a completed project. If you want more content, fork the code and make a mod!
