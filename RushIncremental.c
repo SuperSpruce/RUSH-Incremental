@@ -158,7 +158,7 @@ int main()
 					//RUSH - This is the prestige layer of this game where you reset your progress for a boost in production.
 					//Calculates RUSH gain
 					rushGain = log10((a+10)*(b+10)*(c+10)*(d+10)*(e+10)*(f+10)*(g+10)*pow((csharp+10), 3)/1e10);
-					rushGain = floor(pow(1+u[7]/4.0, 2) * pow(rushGain, 1+log10(rushGain)));
+					rushGain = floor(pow(1+u[7]/4.0, 2) * pow(rushGain, 1+log10(1+rushGain)));
 					//Asks if you actually want to do this and error checks
 					while(areYouSure != 'y' && areYouSure != 'Y' && areYouSure != 'N' && areYouSure != 'n')
 					{
