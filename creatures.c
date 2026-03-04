@@ -2,6 +2,8 @@
 #include <string.h>
 #include "RushNNincludes.h"
 
+#include <omp.h>
+
 #define NUM_GENS 22221 
 int nn_topo[] = {30, 30, 21};
 
@@ -42,6 +44,10 @@ int main()
 		{
 			deathAndReproduction(population, genePool, prng, g);
 		}
+		
+		#pragma omp parallel for num_threads(8) \
+		shared(population, bestOfAllTime) \
+		schedule(guided)
 		for(int i=0; i<POP_SIZE; i++)
 		{
 			// Run the game!

@@ -34,7 +34,7 @@ void fprintInstructionGenome(instruction* base, int cid)
 {
 	FILE* f;
 	char ipath[32];
-	snprintf(ipath, sizeof(ipath), "Genomes/i05_128_1_%07d.txt", cid);
+	snprintf(ipath, sizeof(ipath), "Genomes/i06_128_1_%07d.txt", cid);
 	f = fopen(ipath, "w");
 	if(f == NULL)
 	{
