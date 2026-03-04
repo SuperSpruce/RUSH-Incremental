@@ -19,6 +19,8 @@
 #include <math.h>
 #include "RushNNincludes.h"
 
+#include <omp.h>
+
 
 //Function prototypes
 double boostCalc(double, int);
@@ -77,6 +79,7 @@ float runGame(Creature specimen, int maxFrames)
 	char lastAction = 'A';
 	float sameFramePenalty = -1.0;
 	uint32_t actionRecords = 0;
+	int deadInstructions = 0;
 	
 	//Main game loop
 	while(frames < maxFrames)
@@ -110,56 +113,88 @@ float runGame(Creature specimen, int maxFrames)
 				actionRecords |= 0x000001;
 				if(state.gain[0] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'B':
 				state.b += state.gain[1];
 				actionRecords |= 0x000002;
 				if(state.gain[1] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'C':
 				state.c += state.gain[2];
 				actionRecords |= 0x000004;
 				if(state.gain[2] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'D':
 				state.d += state.gain[3];
 				actionRecords |= 0x000008;
 				if(state.gain[3] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'E':
 				state.e += state.gain[4];
 				actionRecords |= 0x000010;
 				if(state.gain[4] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'F':
 				state.f += state.gain[5];
 				actionRecords |= 0x000020;
 				if(state.gain[5] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'G':
 				state.g += state.gain[6];
 				actionRecords |= 0x000040;
 				if(state.gain[6] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case '#':
 				state.csharp += state.gain[7];
 				actionRecords |= 0x000080;
 				if(state.gain[7] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case 'R':
 				//RUSH - This is the prestige layer of this game where you reset your progress for a boost in production.
@@ -182,7 +217,11 @@ float runGame(Creature specimen, int maxFrames)
 				actionRecords |= 0x000100;
 				if(state.gain[8] > 0)
 					state.stuckframes = 0;
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				break;
 			case '1':
 				if(state.a >= 20*pow(2.0, state.u[0]))
@@ -192,7 +231,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[0]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x000200;
 				break;
 			case '2':
@@ -203,7 +246,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[1]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x000400;
 				break;
 			case '3':
@@ -216,7 +263,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[2]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x000800;
 				break;
 			case '4':
@@ -231,7 +282,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[3]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x001000;
 				break;
 			case '5':
@@ -245,7 +300,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[4]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x002000;
 				break;
 			case '6':
@@ -262,7 +321,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[5]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x004000;
 				break;
 			case '7':
@@ -275,7 +338,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[6]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x008000;
 				break;
 			case '8':
@@ -293,7 +360,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[7]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x010000;
 				break;
 			case '9':
@@ -306,7 +377,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[8]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x020000;
 				break;
 			case 'O':
@@ -326,7 +401,11 @@ float runGame(Creature specimen, int maxFrames)
 					boost = boostCalc(state.rush, state.u[9]);
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x040000;
 				break;
 			case 'N':
@@ -344,7 +423,11 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[10]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x080000;
 				break;
 			case 'M':
@@ -370,16 +453,20 @@ float runGame(Creature specimen, int maxFrames)
 					state.u[11]++;
 					state.stuckframes = 0;
 				}
-				else state.stuckframes++;
+				else {
+					state.stuckframes++;
+					if(lastAction != action)
+						deadInstructions++;
+				}
 				actionRecords |= 0x100000;
 				break;
 		}
 		frames++;
 	}
 	state.stuckframes = frames;
-	writeLogLine(logfile, state, (unsigned int)specimen.id, action, sameFramePenalty);
+	writeLogLine(logfile, state, (unsigned int)specimen.id, action, deadInstructions);
 	fclose(logfile);
-	return fitnessCalc(state, sameFramePenalty);
+	return fitnessCalc(state, deadInstructions);
 }
 
 
@@ -413,7 +500,7 @@ float fitnessCalc(struct gameData gd, float penalty)
 		steel *= 1.25;
 	if(gd.csharp > 0)
 		steel *= 1.25;
-	return (gd.rush + f + bonus) * steel;
+	return (gd.rush + f + bonus) * steel * pow(0.99, penalty);
 }
 
 //Calculates the boost from RUSH
