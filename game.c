@@ -62,7 +62,7 @@ float runGame(Creature specimen, int maxFrames)
 	int currentGen = 2*specimen.id / POP_SIZE;
 	if(currentGen < 1)
 		currentGen = 1;
-	snprintf(path, sizeof(path), "Runs/i05_10K_1_gen_%05d.txt", currentGen);
+	snprintf(path, sizeof(path), "Runs/i06_10K_1_gen_%05d.txt", currentGen);
 	logfile = fopen(path, "a");
 	if(logfile == NULL)
 	{
