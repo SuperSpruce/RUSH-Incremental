@@ -23,6 +23,7 @@ Warning: Moving the .exe and RushIncrementalSave.txt files to separate directori
 12-15-2022 (v1.0.1): Fixed a bug where RUSHing with very few notes gives more RUSH than with some notes (and RUSHing with no notes gave infinite RUSH lol)<br />
 [Break from project]<br />
 11-24-2025: Started working on an AI to find the optimal strategy to this game. This AI uses a 3-layer Neural Network to make its decision for each frame (note gain, upgrade purchase, or RUSH). This AI will be trained using a Genetic Algorithm rather than traditional optimizers.
+3-4-2026: The Neural Network sucks at finding the optimal strategy. I switched to using an instruction genome, where each instruction repeats a particular action 1-255 times. This is much better at actually making progress in the game: The creatures can reach Upgrade 6 and D, up from Upgrade 2 and A. Also implemented OpenMP parallelism.
 
 
 Don't expect future updates to this game by me. It's a completed project. If you want more content, fork the code and make a mod!
